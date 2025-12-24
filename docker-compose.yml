@@ -1,12 +1,8 @@
 version: "3.8"
 
 services:
-  snake:
+  snake_web:
     build: .
     container_name: snake_game
-    environment:
-      - DISPLAY=${DISPLAY}
-    volumes:
-      - /tmp/snake_game:/tmp/.X11-unix
-    stdin_open: true
-    tty: true
+    ports:
+      - "5000:5000"
