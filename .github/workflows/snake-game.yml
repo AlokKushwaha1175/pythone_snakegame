@@ -43,7 +43,7 @@ jobs:
 
           docker run -d \
             --name flask-stag \
-            -p 6000:6000 \
+            -p 6000:5000 \
             --restart always \
             ${{ secrets.DOCKERHUB_USERNAME }}/flask-app:stag
 
