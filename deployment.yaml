@@ -2,8 +2,9 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: snake-game
+  namespace: mysnake-app   # 👈 REQUIRED
 spec:
-  replicas: 2
+  replicas: 1
   selector:
     matchLabels:
       app: snake-game
@@ -13,8 +14,8 @@ spec:
         app: snake-game
     spec:
       containers:
-      - name: snake-game
-        image: alok2026/flask-app:stag
-        ports:
-        - containerPort: 5000
-
+        - name: snake-game
+          image: alok2026/flask-app:stag
+          ports:
+            - containerPort: 5000
+          
