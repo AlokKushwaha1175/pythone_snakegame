@@ -2,6 +2,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: snake-game-service
+  namespace: snake-game  
 spec:
   selector:
     app: snake-game
