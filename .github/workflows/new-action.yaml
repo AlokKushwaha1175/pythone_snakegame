@@ -1,0 +1,29 @@
+name: Build & Deploy Flask App (STAG)
+
+on:
+  push:
+    branches:
+      - stag
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout Code
+      uses: actions/checkout@v4
+
+    - name: Login to Docker Hub
+      uses: docker/login-action@v3
+      with:
+        username: ${{ secrets.DOCKERHUB_USERNAME }}
+        password: ${{ secrets.DOCKERHUB_TOKEN }}
+
+    - name: Build & Push Docker Image
+      run: |
+        docker build -t ${{ secrets.DOCKERHUB_USERNAME }}/flask-app:stag .
+        docker push ${{ secrets.DOCKERHUB_USERNAME }}/flask-app:stag
+
+        EOF
+
+
