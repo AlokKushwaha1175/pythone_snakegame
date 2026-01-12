@@ -24,6 +24,4 @@ jobs:
         docker build -t ${{ secrets.DOCKERHUB_USERNAME }}/flask-app:stag .
         docker push ${{ secrets.DOCKERHUB_USERNAME }}/flask-app:stag
 
-        EOF
-
 
