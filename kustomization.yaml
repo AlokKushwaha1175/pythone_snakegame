@@ -4,5 +4,7 @@ kind: Kustomization
 resources:
   - deployment.yaml
   - service.yaml
+  - grafana.yaml
+  - prometheus.yaml  
 
 namespace: mysnake-app
