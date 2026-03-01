@@ -8,3 +8,7 @@ resources:
   - prometheus.yaml  
 
 namespace: mysnake-app
+
+images:
+  - name: alok2026/flask-app
+    newTag: v1.1  
