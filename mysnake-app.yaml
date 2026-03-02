@@ -1,0 +1,29 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: mysnake-app
+  namespace: argocd
+  annotations:
+    argocd-image-updater.argoproj.io/image-list: flask=alok2026/flask-app
+    argocd-image-updater.argoproj.io/flask.update-strategy: semver
+    argocd-image-updater.argoproj.io/flask.semver-prefix: v
+    argocd-image-updater.argoproj.io/flask.kustomize.image-name: alok2026/flask-app
+    argocd-image-updater.argoproj.io/write-back-method: git:argocd-image-updater/git-creds
+spec:
+  project: default
+
+  source:
+    repoURL: https://github.com/AlokKushwaha1175/pythone_snakegame.git
+    targetRevision: stag
+    path: .
+
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: mysnake-app
+
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true
